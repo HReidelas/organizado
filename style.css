@@ -1,0 +1,8 @@
+h1 {
+    
+    color: #333; /* Cor do texto */
+    font-size: 32px; /* Tamanho da fonte */
+    font-family: Arial, sans-serif; /* Fonte */
+    text-align: center; /* Alinhamento (center, left, right) */
+    margin-bottom: 20px; /* Espaçamento inferior */
+}
