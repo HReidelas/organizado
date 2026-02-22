@@ -1,8 +1,33 @@
-h1 {
+h5 {
     
-    color: #333; /* Cor do texto */
-    font-size: 32px; /* Tamanho da fonte */
-    font-family: Arial, sans-serif; /* Fonte */
-    text-align: center; /* Alinhamento (center, left, right) */
-    margin-bottom: 20px; /* Espaçamento inferior */
+    color: #ff0000; 
+    font-size: 32px; 
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+    text-align: left; 
+    margin-bottom: 50px; 
+}
+/* Container que agrupa a imagem e o vídeo */
+.container {
+  width: 100%;
+  max-width: 1000px; /* Ajuste para o tamanho máximo que desejar */
+  margin: 0 auto;    /* Centraliza o bloco na tela */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Força ambos a ocuparem 100% da largura do container */
+#red, video {
+  width: 100% !important;
+  height: auto;           /* Mantém a proporção correta */
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove qualquer espaço entre a imagem e o vídeo */
+#red {
+  margin-bottom: 0;
+}
+#video {
+  object-fit: cover;
 }
