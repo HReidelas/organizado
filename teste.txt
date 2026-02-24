@@ -1,6 +1,201 @@
-jhhdgb
-bkl
-joijkb
-jb
-~~
-jip
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REDMAGIC Clone</title>
+    
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: sans-serif; }
+        
+        body { background-color: #000; color: #fff; overflow-x: hidden; }
+
+        /* Tela inicial para forçar você a rolar para baixo */
+        .tela-inicial {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, #222 0%, #000 70%);
+        }
+
+        .tela-inicial h1 { color: #ff0033; letter-spacing: 2px; }
+        
+        /* Setinha piscando */
+        .seta { 
+            font-size: 40px; 
+            margin-top: 20px;
+            animation: piscar 1.5s infinite; 
+        }
+
+        @keyframes piscar {
+            0%, 100% { opacity: 1; transform: translateY(0); }
+            50% { opacity: 0.2; transform: translateY(15px); }
+        }
+
+        /* Seção onde o vídeo vai aparecer */
+        .secao-video {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+            padding: 20px;
+        }
+
+        /* A caixa do vídeo que faz a mágica */
+        .caixa-video {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 20px;
+            overflow: hidden;
+            
+            /* ESTADO INICIAL: Invisível, menor e rebaixado */
+            opacity: 0;
+            transform: scale(0.8) translateY(100px);
+            transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+            box-shadow: 0 0 0 rgba(255, 0, 51, 0);
+        }
+
+        /* ESTADO ATIVO: Quando você chega no vídeo rolando a página */
+        .caixa-video.ativo {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+            box-shadow: 0 0 50px rgba(255, 0, 51, 0.6); /* Brilho neon vermelho */
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="tela-inicial">
+        <h1>DESCUBRA O PODER</h1>
+        <div class="seta">👇</div>
+    </div>
+
+    <div class="secao-video">
+        <div class="caixa-video" id="meuVideo">
+            <video autoplay loop muted playsinline>
+                <source src="video.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+    <script>
+        const elementoVideo = document.getElementById('meuVideo');
+
+        // Cria o observador que "vigia" a tela
+        const observador = new IntersectionObserver((entradas) => {
+            entradas.forEach(entrada => {
+                // Se o vídeo apareceu na tela...
+                if (entrada.isIntersecting) {
+                    // Adiciona a classe 'ativo' que dispara a animação do CSS
+                    elementoVideo.classList.add('ativo');
+                }
+            });
+        }, { threshold: 0.3 }); // Começa a animar quando 30% do vídeo aparece
+
+        // Manda vigiar a caixa do vídeo
+        observador.observe(elementoVideo);
+    </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #050505;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* Espaço para forçar a rolagem da página */
+.espaco {
+    height: 100vh; /* Ocupa 100% da altura da tela */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(#050505, #1a0000);
+}
+
+.espaco h1 {
+    color: #ff0033;
+    opacity: 0.5;
+}
+
+/* === A SEÇÃO DO VÍDEO === */
+.video-section {
+    width: 100%;
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    background-color: #050505;
+}
+
+.video-container {
+    width: 90%;
+    max-width: 1200px;
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    
+    /* O SEGREDO DA ANIMAÇÃO COMEÇA AQUI */
+    opacity: 0; /* Começa invisível */
+    transform: scale(0.8) translateY(50px); /* Começa menor e um pouco para baixo */
+    transition: all 1.2s cubic-bezier(0.25, 1, 0.5, 1); /* Animação suave de 1.2 segundos */
+}
+
+/* Essa classe é adicionada pelo JavaScript quando o usuário chega na área */
+.video-container.visivel {
+    opacity: 1; /* Fica 100% visível */
+    transform: scale(1) translateY(0); /* Volta ao tamanho e posição originais */
+    box-shadow: 0 0 50px rgba(255, 0, 51, 0.3); /* Adiciona um brilho vermelho em volta */
+}
+
+/* Configuração do vídeo em si */
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: brightness(0.7); /* Deixa o vídeo um pouco mais escuro para o texto aparecer bem */
+}
+
+/* Texto que fica em cima do vídeo */
+.video-texto {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centraliza perfeitamente */
+    text-align: center;
+}
+
+.video-texto h2 {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 5px;
+    color: white;
+    text-shadow: 2px 2px 20px rgba(255, 0, 51, 0.8); /* Sombra neon */
+}
